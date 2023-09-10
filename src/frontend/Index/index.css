@@ -1,0 +1,30 @@
+.containerForm{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin-left: 15em;
+    margin-right: 15em;
+    border-radius: 10px;
+    box-shadow: 0 0 10px 0 rgba(0,0,0,0.5);
+}
+.btn{
+    margin-top: 10px;
+}
+.title{
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+body{
+    background-color: #f5f5f5;
+}
+.error{
+    background-color: rgb(186, 2, 2);
+    color: black;
+    padding: 10px;
+    width: 95%;
+    border-radius: 5px;
+    margin: 20px auto;
+}
