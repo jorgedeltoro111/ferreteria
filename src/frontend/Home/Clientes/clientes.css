@@ -1,3 +1,10 @@
-.btn{
-    margin-left: 20px;
+.container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin-left: 15em;
+    margin-right: 15em;
+    border-radius: 10px;
 }

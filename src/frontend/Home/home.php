@@ -1,3 +1,11 @@
+<?php
+session_start();
+
+if (!isset($_SESSION['usuario'])) {
+    header("Location: ../../frontend/Index/index.php"); // Redirige a la página de inicio de sesión
+    exit();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
