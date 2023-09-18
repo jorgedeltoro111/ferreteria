@@ -13,9 +13,7 @@
     <form class='containerForm' action="../../backend/Index/inicioSesion.php" method="POST">
         <h1 class="title">Ferreteria</h1>
         <?php
-            if(isset($_GET['error'])){
-                echo '<p class="error">' . $_GET['error'] . '</p>';
-            }
+            include_once("../../backend/Index/error.php");
         ?>
         <div class="form-group">
             <label for="usuario"><i class="fa-solid fa-user"></i> Usuario</label>

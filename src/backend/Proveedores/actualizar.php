@@ -11,10 +11,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $email = $_POST["email"];
         
         // Consulta SQL para actualizar el registro
-        $sql = "UPDATE clientes SET name='$name', adress='$adress', phone='$phone', email='$email' WHERE id='$id'";
+        $sql = "UPDATE proveedores SET name='$name', adress='$adress', phone='$phone', email='$email' WHERE id='$id'";
 
         if ($conexion->query($sql) === TRUE) {
-            header("Location: ../../frontend/Home/Clientes/clientes.php");
+            header("Location: ../../frontend/Home/Proveedores/proveedores.php");
         } else {
             echo "Error al actualizar el registro: " . $conexion->error;
         }

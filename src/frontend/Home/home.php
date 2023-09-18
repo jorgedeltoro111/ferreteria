@@ -5,6 +5,7 @@ if (!isset($_SESSION['usuario'])) {
     header("Location: ../../frontend/Index/index.php"); // Redirige a la página de inicio de sesión
     exit();
 }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -23,20 +24,38 @@ if (!isset($_SESSION['usuario'])) {
 </nav>
 <div class="row row-cols-1 row-cols-md-2">
   <div class="col mb-4">
-    <div class="card">
+    <div class="card m-3">
       <div class="card-body">
-        <h5 class="card-title">Clientes</h5>
-        <p class="card-text">Registra o modifica la información de los clientes.</p>
-        <a href="./Clientes/clientes.php" class="btn btn-success">Ingresar</a>
+        <h5 class="card-title">Usuarios</h5>
+        <p class="card-text">Detalles de usuarios</p>
+        <a href="./Usuarios/usuarios.php" class="btn btn-success">Ingresar</a>
       </div>
     </div>
   </div>
   <div class="col mb-4">
-    <div class="card">
+    <div class="card m-3">
       <div class="card-body">
-        <h5 class="card-title">Proveedor</h5>
-        <p class="card-text">Registrar o modifica la información de los proveedores.</p>
-        <a href="" class="btn btn-success">Ingresar</a>
+        <h5 class="card-title">Proveedores</h5>
+        <p class="card-text">Detalles de proveedores.</p>
+        <a href="./Proveedores/proveedores.php" class="btn btn-success">Ingresar</a>
+      </div>
+    </div>
+  </div>
+  <div class="col mb-4">
+    <div class="card m-3">
+      <div class="card-body">
+        <h5 class="card-title">Productos</h5>
+        <p class="card-text">Detalles de productos.</p>
+        <a href="./Productos/productos.php" class="btn btn-success">Ingresar</a>
+      </div>
+    </div>
+  </div>
+  <div class="col mb-4">
+    <div class="card m-3">
+      <div class="card-body">
+        <h5 class="card-title">Venta</h5>
+        <p class="card-text">Realizar venta</p>
+        <a href="./Venta/venta.php" class="btn btn-success">Ingresar</a>
       </div>
     </div>
   </div>

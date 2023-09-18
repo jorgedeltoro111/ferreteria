@@ -8,11 +8,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $phone = $_POST["phone"];
         $email = $_POST["email"];
         
-        $sql = "INSERT INTO clientes (name, adress, phone, email)
+        $sql = "INSERT INTO proveedores (name, adress, phone, email)
             VALUES ('$name', '$adress', '$phone', '$email')";
 
         if ($conexion->query($sql) === TRUE) {
-            header("Location: ../../frontend/Home/Clientes/clientes.php");
+            header("Location: ../../frontend/Home/Proveedores/proveedores.php");
         } else {
             echo "Error al insertar el registro: " . $conexion->error;
         }

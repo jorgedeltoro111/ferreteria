@@ -1,11 +1,11 @@
 <?php
 // Verifica si se ha proporcionado un id válido en la URL
 if (isset($_GET['id']) && is_numeric($_GET['id'])) {
-    $clienteId = $_GET['id'];
-    include_once '../../../backend/conexion.php';
+    $proveedoresId = $_GET['id'];
+    include_once "../../../backend/conexion.php";
     // Realiza una consulta SQL para obtener los datos del cliente según el $clienteId
     // y asigna los valores a las variables $nombre, $direccion, $telefono, $email
-    $sql = "SELECT * FROM clientes WHERE id = $clienteId";
+    $sql = "SELECT * FROM proveedores WHERE id = $proveedoresId";
     $result = $conexion->query($sql);
     if ($result->num_rows > 0) {
         $row = $result->fetch_assoc();
@@ -30,13 +30,13 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
     <nav class="navbar navbar-light bg-light">
         <form class="form-inline">
             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9JxraBgq7C5DJ6m2p9sHI9kWShIaKsvggrA&usqp=CAU" width="80" height="80" alt="">
-            <h1 class="d-inline-block">Clientes</h1>
-            <a href="../Clientes/clientes.php" class="btn btn-secondary">Atrás</a>
+            <h1 class="d-inline-block">Proveedores</h1>
+            <a href="../Proveedores/proveedores.php" class="btn btn-secondary">Atrás</a>
         </form>
     </nav>
-    <form class="m-3" action="../../../backend/Clientes/actualizar.php" method="POST">
+    <form class="m-3" action="../../../backend/Proveedores/actualizar.php" method="POST">
         <div class="row mt-3">
-            <input type="hidden" name="id" value="<?php echo $clienteId; ?>">
+            <input type="hidden" name="id" value="<?php echo $proveedoresId; ?>">
             <div class="col">
                 <label for="name">Nombre</label>
                 <input type="text" class="form-control" name="name" placeholder="Nombre completo" value="<?php echo $nombre; ?>">
