@@ -2,7 +2,7 @@
 session_start();
 
 if (!isset($_SESSION['usuario'])) {
-    header("Location: ../../frontend/Index/index.php"); // Redirige a la página de inicio de sesión
+    header("Location: ../../Index/index.php"); // Redirige a la página de inicio de sesión
     exit();
 }
 // Conexión a la base de datos
