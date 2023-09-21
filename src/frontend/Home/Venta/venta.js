@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const listaProductos = document.getElementById('listaProductos');
     const existenciasAlert = document.getElementById('existenciasAlert');
     const ventaData = []; // Arreglo para almacenar los datos de la venta
-
+    
     botonAgregar.addEventListener('click', function() {
         const productoSeleccionado = selectProducto.value;
         const cantidad = inputCantidad.value;
@@ -55,24 +55,22 @@ document.addEventListener('DOMContentLoaded', function() {
             alert('Agrega al menos un producto antes de guardar la venta.');
             return;
         }
-
-        // Enviar los datos de la venta al servidor
-        fetch('guardar_venta.php', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(ventaData)
-        })
-        .then(response => response.json())
-        .then(data => {
-            console.log('Venta guardada con éxito:', data);
-            // Redirigir o mostrar un mensaje de éxito
-            window.location.href = 'venta.php';
-        })
-        .catch(error => {
-            console.error('Error al guardar la venta:', error);
-            alert('Error al guardar la venta. Consulta la consola para más detalles.');
-        });
+            fetch('guardar_venta.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(ventaData)
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Venta guardada con éxito:', data);
+                // Redirigir o mostrar un mensaje de éxito
+                window.location.href = 'venta.php';
+            })
+            .catch(error => {
+                console.error('Error al guardar la venta:', error);
+                alert('Error al guardar la venta. Consulta la consola para más detalles.');
+            });
     });
 });

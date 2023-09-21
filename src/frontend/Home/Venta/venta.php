@@ -55,7 +55,7 @@ $result = $conexion->query($sql);
                                 // Itera sobre los productos
                                 while($row = $result->fetch_assoc()) {
                                     if($row['existencias'] > 0){
-                                        echo "<option value='" . $row['id'] . "' data-existencias='" . $row['existencias'] . "'>" . $row['nombre'] . "</option>";
+                                        echo "<option value='" . $row['id'] . "' data-existencias='" . $row['existencias'] . "'>" . $row['nombre'] . " - $" . $row['precio'] ."</option>";
                                     }
                                 }
                             }
@@ -73,12 +73,46 @@ $result = $conexion->query($sql);
                 </div>
                 <div class="col">
                     <label for="guardarVenta" class="form-label">&nbsp;</label>
-                    <button type="button" class="btn btn-primary form-control" id="guardarVenta">Realizar Venta</button>
+                    <button type="button" class="btn btn-primary form-control" id="guardarVenta" onclick="confirmacion();">Realizar Venta</button>
+                    <script>
+                        function confirmacion(){
+                            alert("Venta realizada con éxito");
+                        }
+                    </script>
                 </div>
             </form>
             <div id="existenciasAlert"></div>
             <ul id="listaProductos" class="list-group"></ul>
         </div>
+        <div class="tab-pane fade" id="ventas" role="tabpanel" aria-labelledby="profile-tab">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">Folio</th>
+                        <th scope="col">Total</th>
+                        <th scope="col">Fecha</th>
+                        <th scope="col">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                    // Consulta SQL para obtener las ventas
+                    $sql = "SELECT * FROM ventas ORDER BY fecha DESC";
+                    $result = $conexion->query($sql);
+                    if ($result->num_rows > 0) {
+                        // Itera sobre las ventas
+                        while($row = $result->fetch_assoc()) {
+                            echo "<tr>";
+                            echo "<td>" . $row['id'] . "</td>";
+                            echo "<td>" . $row['total'] . "</td>";
+                            echo "<td>" . $row['fecha'] . "</td>";
+                            echo "<td><a href='ver_venta.php?id=".$row['id']."&total=" .$row['total'] . "' class='btn btn-primary'>Ver</a></td>";
+                            echo "</tr>";
+                        }
+                    }
+                    ?>
+                </tbody>
+            </table>
     </div>
 </body>
 </html>

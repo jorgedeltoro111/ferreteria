@@ -37,6 +37,9 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
     <form class="m-3" action="../../../backend/Productos/actualizar.php" method="POST">
             <div class="row mt-3">
                 <div class="col">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" name="id" placeholder="1" value="<?php echo $productoId; ?>" readonly>
+                <div class="col">
                     <label for="nombre">Nombre</label>
                     <input type="text" class="form-control" name="nombre" placeholder="Laptop" value="<?php echo $nombre; ?>">
                 </div>

@@ -53,8 +53,17 @@ if (!isset($_SESSION['usuario'])) {
   <div class="col mb-4">
     <div class="card m-3">
       <div class="card-body">
-        <h5 class="card-title">Venta</h5>
+        <h5 class="card-title">Ventas</h5>
         <p class="card-text">Realizar venta</p>
+        <a href="./Venta/venta.php" class="btn btn-success">Ingresar</a>
+      </div>
+    </div>
+  </div>
+  <div class="col mb-4">
+    <div class="card m-3">
+      <div class="card-body">
+        <h5 class="card-title">Compras</h5>
+        <p class="card-text">Realizar compra</p>
         <a href="./Venta/venta.php" class="btn btn-success">Ingresar</a>
       </div>
     </div>
