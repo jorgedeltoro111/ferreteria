@@ -42,7 +42,7 @@ include_once '../../../backend/conexion.php';
     <h4>Realizar Compra</h4>
     <!-- Formulario para ingresar información de la compra -->
         <form action="procesar_compra.php" method="post">
-        <select name="proveedoresEliminar" id="proveedoresEliminar">
+        <select name="proveedores" id="proveedores">
             <?php
                 // Consulta SQL para obtener los clientes
                 $sql = "SELECT id, name FROM proveedores";
