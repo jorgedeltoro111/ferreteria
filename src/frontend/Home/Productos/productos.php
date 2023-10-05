@@ -35,9 +35,9 @@ $result = $conexion->query($sql);
         <li class="nav-item">
             <a class="nav-link active" id="home-tab" data-bs-toggle="tab" href="#productos" role="tab" aria-controls="productos" aria-expanded="true">Productos</a>
         </li>
-        <li class="nav-item">
+        <!-- <li class="nav-item">
             <a class="nav-link" id="profile-tab" data-bs-toggle="tab" href="#registrar" role="tab" aria-controls="registrar" aria-expanded="false">Registrar</a>
-        </li>
+        </li>-->
         <li class="nav-item">
             <a class="nav-link" id="contact-tab" data-bs-toggle="tab" href="#modificar" role="tab" aria-controls="modificar" aria-expanded="false">Modificar</a>
         </li>
