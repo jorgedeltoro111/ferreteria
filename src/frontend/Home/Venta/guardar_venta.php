@@ -9,8 +9,8 @@ if (!isset($_SESSION['usuario'])) {
 include_once '../../../backend/conexion.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $data = json_decode(file_get_contents('php://input'), true);
-    
+    $data = json_decode(file_get_contents("php://input"), true);
+
     $total = 0;
     $idUsuario = $_SESSION['id'];
 
@@ -23,6 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         foreach ($data as $producto) {
             $idProducto = $producto['id'];
             $cantidad = $producto['cantidad'];
+            $porcentaje = $producto['porcentaje'];
 
             // Obtiene el precio del producto
             $sqlPrecio = "SELECT precio FROM productos WHERE id = $idProducto";
@@ -32,9 +33,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $precioProducto = $rowPrecio['precio'];
 
                 // Calcula el subtotal y actualiza el total de la venta
+                $utilidad = $precioProducto * $porcentaje;
+                $precioProducto = $precioProducto + ($precioProducto * $porcentaje);
                 $subtotal = $precioProducto * $cantidad;
                 $total += $subtotal;
-
+                
                 // Actualiza las existencias
                 $sqlExistencias = "SELECT existencias FROM productos WHERE id = $idProducto";
                 $resultadoExistencias = $conexion->query($sqlExistencias);
@@ -47,7 +50,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     $conexion->query($sqlActualizarExistencias);
 
                     // Registra el detalle de la venta
-                    $sqlDetalleVenta = "INSERT INTO detalleventas (piezas, id_venta, id_producto) VALUES ($cantidad, $idVenta, $idProducto)";
+                    $sqlDetalleVenta = "INSERT INTO detalleventas (piezas, id_venta, id_producto, utilidad) VALUES ($cantidad, $idVenta, $idProducto, $utilidad)";
                     $conexion->query($sqlDetalleVenta);
                 }
             }

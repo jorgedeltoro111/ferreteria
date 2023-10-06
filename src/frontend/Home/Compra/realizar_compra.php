@@ -29,7 +29,7 @@ if($conexion->query($sql)){
             $idProducto = $row['id'];
 
             // Actualizar existencias y registrar el detalle de la compra
-            $sqlExistencias = "UPDATE productos SET existencias = existencias + $existencias WHERE id = $idProducto";
+            $sqlExistencias = "UPDATE productos SET existencias = existencias + $existencias, precio = $precio WHERE id = $idProducto";
             $conexion->query($sqlExistencias);
 
             $sqlDetalleCompra = "INSERT INTO detallecompras (piezas, id_producto, id_compra) VALUES ($existencias, $idProducto, $idCompra)";

@@ -39,6 +39,7 @@ if (isset($_GET['id'])) {
       <th scope="col">Producto</th>
       <th scope="col">Piezas</th>
       <th scope="col">Usuario</th>
+      <th scope="col">Utilidad</th>
       <th scope="col">Precio</th>
     </tr>
   </thead>
@@ -54,11 +55,15 @@ if (isset($_GET['id'])) {
               INNER JOIN usuarios ON ventas.id_usuario = usuarios.id
               WHERE detalleventas.id_venta = $id";
       $result = $conexion->query($sql);
+      $utilidad = 0;
       while($row = $result->fetch_array()){
+        $detalle = $row['precio'] / $row['piezas'];
+        $utilidad = $total - $row['precio'];
         echo "<tr>";
           echo "<td scope=row>" .  $row['nombre_producto']  ."</td>";
           echo "<td>" . $row['piezas'] . "</td>";
           echo "<td>" . $row['nombre_usuario'] . "</td>";
+          echo "<td> $" . $utilidad . "</td>";
           echo "<td> $"  . $row['precio'] . "</td>";
         echo "</tr>";
       }

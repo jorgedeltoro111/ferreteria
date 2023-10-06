@@ -54,11 +54,12 @@ if (isset($_GET['id'])) {
             WHERE detallecompras.id_compra = $id";
             $result = $conexion->query($sql);
       while($row = $result->fetch_array()){
+        $detail = $total / $row['piezas'];
         echo "<tr>";
           echo "<td scope=row>" .  $row['nombre_producto']  ."</td>";
           echo "<td>" . $row['piezas'] . "</td>";
           echo "<td>" . $row['nombre_proveedor'] . "</td>";
-          echo "<td> $"  . $row['precio'] . "</td>";
+          echo "<td> $"  . $detail . "</td>";
         echo "</tr>";
       }
     ?>
