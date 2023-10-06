@@ -26,9 +26,10 @@ if (!isset($_SESSION['usuario'])) {
   <div class="col mb-4">
     <div class="card m-3">
       <div class="card-body">
-        <h5 class="card-title">Usuarios</h5>
-        <p class="card-text">Detalles de usuarios</p>
-        <a href="./Usuarios/usuarios.php" class="btn btn-success">Ingresar</a>
+        <h5 class="card-title text-center">Usuarios</h5>
+        <img alt="Imagen de usuario" class="w-60 h-60 mx-auto d-block" src="../../img/usuario.png"/>
+        <p class="card-text text-center">Detalles de usuarios</p>
+        <a href="./Usuarios/usuarios.php" class="btn btn-success mx-auto d-block">Ingresar</a>
       </div>
     </div>
   </div>
@@ -36,7 +37,7 @@ if (!isset($_SESSION['usuario'])) {
     <div class="card m-3">
       <div class="card-body">
         <h5 class="card-title">Proveedores</h5>
-        <p class="card-text">Detalles de proveedores.</p>
+        <p class="card-text text-center">Detalles de proveedores.</p>
         <a href="./Proveedores/proveedores.php" class="btn btn-success">Ingresar</a>
       </div>
     </div>
