@@ -39,15 +39,16 @@ include_once '../../../backend/conexion.php';
     <div class="tab-content m-3" id="myTabContent"></div>
         <div class="tab-pane fade show active" id="nuevaCompra" role="tabpanel" aria-labelledby="home-tab">
             <div class="container">
+    <h6 class="bg-warning text-black rounded p-2">Presiona F5 para reiniciar la compra</h6>
     <h4>Realizar Compra</h4>
     <!-- Formulario para ingresar información de la compra -->
-        <form action="procesar_compra.php" method="post">
-        <select name="proveedores" id="proveedores">
+        <form>
+        <select name="proveedores" id="proveedores" onchange="obtenerProveedorSeleccionado(this.value)">
             <?php
                 // Consulta SQL para obtener los clientes
                 $sql = "SELECT id, name FROM proveedores";
                 $result = $conexion->query($sql);
-                echo "<option>Selecciona un proveedor</option>";
+                echo "<option value='0'>Selecciona un proveedor</option>";
                 if($result->num_rows > 0){
                     while($row = $result->fetch_assoc()){
                         echo "<option value='".$row['id']."'>".$row['name']."</option>";
@@ -73,7 +74,7 @@ include_once '../../../backend/conexion.php';
             </div>
 
             <button type="button" class="btn btn-primary mt-3" onclick="agregarNuevoProducto()">Agregar Nuevo Producto</button>
-            <button type="submit" class="btn btn-success float-left mt-3">Realizar Compra</button>
+            <button type="submit" class="btn btn-success float-left mt-3" onclick="realizarCompra()">Realizar Compra</button>
             <h6 id="total" class="mt-3">Total: $0.00</h6>
             <!-- Lista de productos seleccionados -->
             <ul id="listaProductos" class="list-group mt-3">
