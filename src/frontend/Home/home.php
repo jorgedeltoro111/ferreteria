@@ -36,36 +36,50 @@ if (!isset($_SESSION['usuario'])) {
   <div class="col mb-4">
     <div class="card m-3">
       <div class="card-body">
-        <h5 class="card-title">Proveedores</h5>
+        <h5 class="card-title text-center">Proveedores</h5>
+        <img alt="Imagen de usuario" class="w-60 h-60 mx-auto d-block" src="../../img/proveedor.png"/>
         <p class="card-text text-center">Detalles de proveedores.</p>
-        <a href="./Proveedores/proveedores.php" class="btn btn-success">Ingresar</a>
+        <a href="./Proveedores/proveedores.php" class="btn btn-success mx-auto d-block">Ingresar</a>
       </div>
     </div>
   </div>
   <div class="col mb-4">
     <div class="card m-3">
       <div class="card-body">
-        <h5 class="card-title">Productos</h5>
-        <p class="card-text">Detalles de productos.</p>
-        <a href="./Productos/productos.php" class="btn btn-success">Ingresar</a>
+        <h5 class="card-title text-center">Productos</h5>
+        <img alt="Imagen de usuario" class="w-60 h-60 mx-auto d-block" src="../../img/tool.png"/>
+        <p class="card-text text-center">Detalles de productos.</p>
+        <a href="./Productos/productos.php" class="btn btn-success mx-auto d-block">Ingresar</a>
       </div>
     </div>
   </div>
   <div class="col mb-4">
     <div class="card m-3">
       <div class="card-body">
-        <h5 class="card-title">Ventas</h5>
-        <p class="card-text">Realizar venta</p>
-        <a href="./Venta/venta.php" class="btn btn-success">Ingresar</a>
+        <h5 class="card-title text-center">Ventas</h5>
+        <img alt="Imagen de usuario" class="w-60 h-60 mx-auto d-block" src="../../img/venta.png"/>
+        <p class="card-text text-center">Realizar venta</p>
+        <a href="./Venta/venta.php" class="btn btn-success mx-auto d-block">Ingresar</a>
       </div>
     </div>
   </div>
   <div class="col mb-4">
     <div class="card m-3">
       <div class="card-body">
-        <h5 class="card-title">Compras</h5>
-        <p class="card-text">Realizar compra</p>
-        <a href="./Compra/compra.php" class="btn btn-success">Ingresar</a>
+        <h5 class="card-title text-center">Compras</h5>
+        <img alt="Imagen de usuario" class="w-60 h-60 mx-auto d-block" src="../../img/compras.png"/>
+        <p class="card-text text-center">Realizar compra</p>
+        <a href="./Compra/compra.php" class="btn btn-success mx-auto d-block">Ingresar</a>
+      </div>
+    </div>
+  </div>
+  <div class="col mb-4">
+    <div class="card m-3">
+      <div class="card-body">
+        <h5 class="card-title text-center">Análisis</h5>
+        <img alt="Imagen de usuario" class="w-60 h-60 mx-auto d-block" src="../../img/analisis.png"/>
+        <p class="card-text text-center">Ver análisis</p>
+        <a href="./Compra/compra.php" class="btn btn-success mx-auto d-block">Ingresar</a>
       </div>
     </div>
   </div>
