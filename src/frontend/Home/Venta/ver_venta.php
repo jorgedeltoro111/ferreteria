@@ -38,22 +38,27 @@ if (isset($_GET['id'])) {
     <tr>
       <th scope="col">Producto</th>
       <th scope="col">Piezas</th>
+      <th scope="col">Usuario</th>
       <th scope="col">Precio</th>
     </tr>
   </thead>
   <tbody>
     <?php
       $sql = "SELECT productos.nombre AS nombre_producto, 
-                     detalleventas.piezas AS piezas, 
-                     productos.precio AS precio
+                    detalleventas.piezas AS piezas, 
+                    productos.precio AS precio,
+                    usuarios.usuario AS nombre_usuario
               FROM detalleventas
               INNER JOIN productos ON detalleventas.id_producto = productos.id
+              INNER JOIN ventas ON detalleventas.id_venta = ventas.id
+              INNER JOIN usuarios ON ventas.id_usuario = usuarios.id
               WHERE detalleventas.id_venta = $id";
       $result = $conexion->query($sql);
       while($row = $result->fetch_array()){
         echo "<tr>";
           echo "<td scope=row>" .  $row['nombre_producto']  ."</td>";
           echo "<td>" . $row['piezas'] . "</td>";
+          echo "<td>" . $row['nombre_usuario'] . "</td>";
           echo "<td> $"  . $row['precio'] . "</td>";
         echo "</tr>";
       }
