@@ -103,7 +103,7 @@ include_once '../../../backend/conexion.php';
                             echo "<td>" . $row['id'] . "</td>";
                             echo "<td>" . $row['total'] . "</td>";
                             echo "<td>" . $row['fecha'] . "</td>";
-                            echo "<td><a href='ver_venta.php?id=".$row['id']."&total=" .$row['total'] . "' class='btn btn-primary'>Ver</a></td>";
+                            echo "<td><a href='ver_compra.php?id=".$row['id']."&total=" .$row['total'] . "' class='btn btn-primary'>Ver</a></td>";
                             echo "</tr>";
                         }
                     }
