@@ -5,9 +5,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (isset($_POST["usuario"]) && isset($_POST["password"])) {
         $usuario = $_POST["usuario"];
         $password = $_POST["password"];
+
+        $hashed_password = password_hash($password, PASSWORD_BCRYPT);
         
         $sql = "INSERT INTO usuarios (usuario, password)
-            VALUES ('$usuario', '$password')";
+            VALUES ('$usuario', '$hashed_password')";
 
         if ($conexion->query($sql) === TRUE) {
             header("Location: ../../frontend/Home/Usuarios/usuarios.php");

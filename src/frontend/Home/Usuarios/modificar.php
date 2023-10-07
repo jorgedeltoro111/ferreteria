@@ -41,7 +41,7 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
             </div>
             <div class="col">
                 <label for="password">Contraseña</label>
-                <input type="password" class="form-control" name="password" placeholder="Ingresa tu contraseña" value="<?php echo $password; ?>">
+                <input type="password" class="form-control" name="password" placeholder="Ingresa tu contraseña">
             </div>
         </div>
         <div class="row mt-3">

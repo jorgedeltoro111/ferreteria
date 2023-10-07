@@ -18,11 +18,11 @@
             header("Location: ../../frontend/Index/index.php?error=La Contraseña es requerida");
             exit();
         }else{
-            $sql = "SELECT * FROM usuarios WHERE usuario='$usuario' AND password='$password'";
+            $sql = "SELECT * FROM usuarios WHERE usuario='$usuario'";
             $result = mysqli_query($conexion, $sql);
             if(mysqli_num_rows($result)===1){
                 $row = mysqli_fetch_assoc($result);
-                if($row['usuario'] === $usuario && $row['password'] === $password){
+                if($row && password_verify($password, $row['password'])){
                     $_SESSION['usuario'] = $row['usuario'];
                     $_SESSION['password'] = $row['password'];
                     $_SESSION['id'] = $row['id'];

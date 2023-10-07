@@ -16,11 +16,12 @@ if (!isset($_SESSION['usuario'])) {
     <title>Ferreteria</title>
 </head>
 <body>
-<nav class="navbar navbar-light bg-light"></nav>
+<nav class="navbar navbar-light bg-light">
   <form class="form-inline">
     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9JxraBgq7C5DJ6m2p9sHI9kWShIaKsvggrA&usqp=CAU" width="80" height="80" alt="">
     <h1 class="d-inline-block">Ferreteria</h1>
   </form>
+  <a href="../../backend/Home/cerrarSesion.php" class="btn btn-danger mr-3">Cerrar sesión</a>
 </nav>
 <div class="row row-cols-1 row-cols-md-3">
   <div class="col mb-4">
@@ -79,13 +80,10 @@ if (!isset($_SESSION['usuario'])) {
         <h5 class="card-title text-center">Análisis</h5>
         <img alt="Imagen de usuario" class="w-60 h-60 mx-auto d-block" src="../../img/analisis.png"/>
         <p class="card-text text-center">Ver análisis</p>
-        <a href="./Compra/compra.php" class="btn btn-success mx-auto d-block">Ingresar</a>
+        <a href="./Analisis/analisis.php" class="btn btn-success mx-auto d-block">Ingresar</a>
       </div>
     </div>
   </div>
-</div>
-<div class="text-center">
-    <a href="../../backend/Home/cerrarSesion.php" class="btn btn-danger">Cerrar sesión</a>
 </div>
 </body>
 </html>

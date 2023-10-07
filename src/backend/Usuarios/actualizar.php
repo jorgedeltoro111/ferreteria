@@ -7,9 +7,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $id = $_POST["id"];
         $usuario = $_POST["usuario"];
         $password = $_POST["password"];
-        
+        $hashed_password = password_hash($password, PASSWORD_BCRYPT);
         // Consulta SQL para actualizar el registro
-        $sql = "UPDATE usuarios SET usuario='$usuario', password='$password' WHERE id='$id'";
+        $sql = "UPDATE usuarios SET usuario='$usuario', password='$hashed_password' WHERE id='$id'";
 
         if ($conexion->query($sql) === TRUE) {
             header("Location: ../../frontend/Home/Usuarios/usuarios.php");
