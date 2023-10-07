@@ -24,17 +24,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $idProducto = $producto['id'];
             $cantidad = $producto['cantidad'];
             $porcentaje = $producto['porcentaje'];
-
+            
             // Obtiene el precio del producto
             $sqlPrecio = "SELECT precio FROM productos WHERE id = $idProducto";
             $resultadoPrecio = $conexion->query($sqlPrecio);
             if ($resultadoPrecio->num_rows > 0) {
                 $rowPrecio = $resultadoPrecio->fetch_assoc();
                 $precioProducto = $rowPrecio['precio'];
-
                 // Calcula el subtotal y actualiza el total de la venta
                 $utilidad = $precioProducto * $porcentaje;
-                $precioProducto = $precioProducto + ($precioProducto * $porcentaje);
+                $precioProducto = $precioProducto + $utilidad;
                 $subtotal = $precioProducto * $cantidad;
                 $total += $subtotal;
                 
@@ -52,6 +51,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     // Registra el detalle de la venta
                     $sqlDetalleVenta = "INSERT INTO detalleventas (piezas, id_venta, id_producto, utilidad) VALUES ($cantidad, $idVenta, $idProducto, $utilidad)";
                     $conexion->query($sqlDetalleVenta);
+                    $utilidad = 0;
                 }
             }
         }

@@ -28,19 +28,18 @@ if (isset($_GET['id'])) {
             <a href="./venta.php" class="btn btn-secondary">Atrás</a>
         </form>
     </nav>
-  <hr>
   <?php
-    echo "<h4 class='id_venta text-center'>ID de venta: " . $id . "</h4>";
+    echo "<h5 class='id_venta text-center mt-3'>ID de venta: " . $id . "</h5>";
   ?>
-  <hr>
   <table class="table m-5">
   <thead class="thead-dark">
     <tr>
       <th scope="col">Producto</th>
+      <th scope="col">Precio unitario</th>
       <th scope="col">Piezas</th>
-      <th scope="col">Usuario</th>
+      <th scope="col">Subtotal</th>
       <th scope="col">Utilidad</th>
-      <th scope="col">Precio</th>
+      <th scope="col">Total</th>
     </tr>
   </thead>
   <tbody>
@@ -48,24 +47,32 @@ if (isset($_GET['id'])) {
       $sql = "SELECT productos.nombre AS nombre_producto, 
                     detalleventas.piezas AS piezas, 
                     productos.precio AS precio,
-                    usuarios.usuario AS nombre_usuario
+                    usuarios.usuario AS nombre_usuario,
+                    detalleventas.utilidad AS utilidad
               FROM detalleventas
               INNER JOIN productos ON detalleventas.id_producto = productos.id
               INNER JOIN ventas ON detalleventas.id_venta = ventas.id
               INNER JOIN usuarios ON ventas.id_usuario = usuarios.id
               WHERE detalleventas.id_venta = $id";
       $result = $conexion->query($sql);
-      $utilidad = 0;
-      while($row = $result->fetch_array()){
-        $detalle = $row['precio'] / $row['piezas'];
-        $utilidad = $total - $row['precio'];
+      $band = true;
+      while($row = $result->fetch_assoc()){
+        $utilidad = 0;
+        $subtotal = $row['precio'] * $row['piezas'];
+        $utilidad = $utilidad + ($row['utilidad'] * $row['piezas']);
+        $totalPorProducto = $subtotal + $utilidad;
         echo "<tr>";
           echo "<td scope=row>" .  $row['nombre_producto']  ."</td>";
-          echo "<td>" . $row['piezas'] . "</td>";
-          echo "<td>" . $row['nombre_usuario'] . "</td>";
-          echo "<td> $" . $utilidad . "</td>";
           echo "<td> $"  . $row['precio'] . "</td>";
+          echo "<td>" . $row['piezas'] . "</td>";
+          echo "<td>" . $subtotal . "</td>";
+          echo "<td> $" . $utilidad . "</td>";
+          echo "<td> $" . $totalPorProducto . "</td>";
         echo "</tr>";
+        if($band){
+          echo "<h5 class='text-center'>Venta realizada por: " . $row['nombre_usuario'] . "</h5>";
+          $band = false;
+        }
       }
     ?>
   </tbody>
