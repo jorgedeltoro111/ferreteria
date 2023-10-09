@@ -2,8 +2,8 @@
 
 Este punto de venta ayuda a tu negocio a llevar el control del flujo de dinero mensual, incluyendo una sección especifica para el análisis de utilidades, productos más vendidos y un listado de los usuarios que más vendieron durante el mes.
 ## Credenciales para poder probar el punto de venta.
-# Usuario: Admin 
-# Contraseña: Admin
+Usuario: Admin 
+Contraseña: Admin
 
 ## Secciones del punto de venta
  - Usuarios
