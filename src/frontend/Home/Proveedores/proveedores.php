@@ -97,7 +97,12 @@ $result = $conexion->query($sql);
             </div>
             <div class="row mt-3">
                 <div class="col">
-                <button type="submit" class="btn btn-success mt-3">Registrar</button>
+                <button type="submit" class="btn btn-success mt-3" onclick="confirmacion();">Registrar</button>
+                <script>
+                    function confirmacion(){
+                        alert("Registrado correctamente");
+                    }
+                </script>    
                 </div>
             </div>
         </form>
@@ -147,6 +152,9 @@ $result = $conexion->query($sql);
             </table>
     </div>
     <div class="tab-pane fade" id="eliminar" role="tabpanel" aria-labelledby="contact-tab">
+        <h6 class="p-3 mb-2 bg-danger text-white">
+            NOTA: Al eliminar un proveedor, se eliminarán todas los registros relacionados con ese proveedor.
+        </h6>
         <h6>Selecciona al proveedor que deseas eliminar</h6>
         <form action="../../../backend/Proveedores/eliminar.php" method="POST">
         <select name="proveedoresEliminar" id="proveedoresEliminar">

@@ -148,6 +148,9 @@ $result = $conexion->query($sql);
     </div>
 
     <div class="tab-pane fade" id="eliminar" role="tabpanel" aria-labelledby="contact-tab">
+        <h6 class="p-3 mb-2 bg-danger text-white">
+            NOTA: Al eliminar un producto, se eliminarán todas los registros de compras y ventas que se hayan realizado con ese producto.
+        </h6>
         <h6>Selecciona el producto que deseas eliminar</h6>
         <form action="../../../backend/Productos/eliminar.php" method="POST">
         <select name="productosEliminar" id="productosEliminar">
@@ -165,11 +168,16 @@ $result = $conexion->query($sql);
         </select>
         <?php
             if($result->num_rows > 0){
-                echo "<button type='submit' class='btn btn-danger mt-3'>Eliminar</button>";
+                echo "<button type='submit' class='btn btn-danger mt-3 onclick='confirmacion();''>Eliminar</button>";
             } else {
                 echo "<button type='submit' class='btn btn-danger mt-3' disabled>Eliminar</button>";
             }
         ?>
+        <script>
+            function confirmacion(){
+                alert("Eliminado correctamente");
+            }
+        </script>
     </form>
     <table class="table table-light mt-3">
             <thead>

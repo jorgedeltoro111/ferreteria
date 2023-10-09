@@ -47,6 +47,7 @@ function agregarNuevoProducto() {
 }
 function realizarCompra() {
   // Enviar los productos al servidor utilizando fetch
+
   fetch('realizar_compra.php', {
     method: 'POST',
     headers: {
@@ -59,11 +60,6 @@ function realizarCompra() {
     })
   })
   .then(response => response.json())
-  .then(data => {
-    // Hacer algo con la respuesta del servidor si es necesario
-    alert('Compra realizada con éxito');
-    window.location.href = 'http://localhost/ProyectoFinal/ProyectoFinal/src/frontend/Home/Compra/Compra.php';
-  })
   .catch(error => console.error('Error al realizar la compra:', error));
 }
 

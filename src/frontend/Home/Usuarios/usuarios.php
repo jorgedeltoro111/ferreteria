@@ -126,6 +126,9 @@ $result = $conexion->query($sql);
     </div>
 
     <div class="tab-pane fade" id="eliminar" role="tabpanel" aria-labelledby="contact-tab">
+        <h6 class="p-3 mb-2 bg-danger text-white">
+            NOTA: Al eliminar un usuario, se eliminarán todas los registros de compras y ventas que se hayan realizado con ese usuario.
+        </h6>
         <h6>Selecciona al usuario que deseas eliminar</h6>
         <form action="../../../backend/Usuarios/eliminar.php" method="POST">
         <select name="usuariosEliminar" id="usuariosEliminar">

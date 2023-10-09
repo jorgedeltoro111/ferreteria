@@ -60,7 +60,12 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
             </div>
         <div class="row mt-3">
             <div class="col">
-                <button type="submit" class="btn btn-success mt-3">Actualizar</button>
+                <button type="submit" class="btn btn-success mt-3" onclick="confirmacion();">Actualizar</button>
+                <script>
+                    function confirmacion(){
+                        alert("Actualizado correctamente");
+                    }
+                </script>
             </div>
         </div>
     </form>
