@@ -58,7 +58,7 @@ include_once '../../../backend/conexion.php';
                             <?php
                             $sql_config_idioma = "SET lc_time_names = 'es_ES'";
                             mysqli_query($conexion, $sql_config_idioma);
-                            $sql = "SELECT MONTHNAME(fecha) AS mes, SUM(total) AS total FROM ventas GROUP BY MONTHNAME(fecha)";
+                            $sql = "SELECT MONTHNAME(fecha) AS mes, SUM(total) AS total FROM ventas GROUP BY MONTHNAME(fecha) ORDER BY FIELD(mes, 'Diciembre', 'Noviembre', 'Octubre', 'Septiembre', 'Agosto', 'Julio', 'Junio', 'Mayo', 'Abril', 'Marzo', 'Febrero', 'Enero');";
                             $resultado = mysqli_query($conexion, $sql);
                             while ($fila = mysqli_fetch_assoc($resultado)) {
                                 echo "<tr>";
@@ -66,6 +66,55 @@ include_once '../../../backend/conexion.php';
                                 echo "<td>" . $fila['total'] . "</td>";
                                 echo "</tr>";
                             }
+                            ?>
+                        </tbody>
+                    </table>
+                    <table class="table table-striped">
+                        <?php
+                            // Establecer la configuración regional a español
+                            include_once '../../../backend/conexion.php';
+                            $meses_ingles = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+                            $meses_espanol = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
+
+                            // Obtener el nombre del mes actual en inglés
+                            $mes_actual_ingles = date('F');
+
+                            // Traducir el nombre del mes a español
+                            $mes_actual_espanol = str_replace($meses_ingles, $meses_espanol, $mes_actual_ingles);
+
+                            echo "<h6>Ranking de productos vendidos en " . $mes_actual_espanol . "</h6>";
+                        ?>
+                        <thead>
+                            <tr>
+                                <th scope="col">Producto</th>
+                                <th scope="col">Veces vendido</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                                $sql_productos_ranking = "SELECT
+                                        productos.nombre AS Producto,
+                                        SUM(detalleventas.piezas) AS TotalPiezasVendidas
+                                    FROM
+                                        detalleventas
+                                    INNER JOIN
+                                        productos ON detalleventas.id_producto = productos.id
+                                    INNER JOIN
+                                        ventas ON detalleventas.id_venta = ventas.id
+                                    WHERE
+                                        MONTH(ventas.fecha) = MONTH(CURDATE())
+                                    GROUP BY
+                                        detalleventas.id_producto, productos.nombre
+                                    ORDER BY
+                                        TotalPiezasVendidas DESC;";
+
+                                $resultado_productos_ranking = mysqli_query($conexion, $sql_productos_ranking);
+                                while ($fila_productos_ranking = mysqli_fetch_assoc($resultado_productos_ranking)) {
+                                    echo "<tr>";
+                                    echo "<td>" . $fila_productos_ranking['Producto'] . "</td>";
+                                    echo "<td>" . $fila_productos_ranking['TotalPiezasVendidas'] . "</td>";
+                                    echo "</tr>";
+                                }
                             ?>
                         </tbody>
                     </table>
