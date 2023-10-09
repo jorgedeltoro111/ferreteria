@@ -1,15 +1,12 @@
 .flex-container {
     display: flex;
-    justify-content: flex-end; /* Alinea al extremo derecho */
-    align-items: flex-start; /* Alinea en la parte superior */
-    height: 100%; /* Establece la altura al 100% para que el aside se extienda por la altura del contenedor */
 }
 
-.flex-container aside {
-    width: 30%; /* Ajusta el ancho del aside según tus necesidades */
-    padding: 20px;
-    background-color: #f8f9fa; /* Color de fondo del aside */
+.tabla-ventas {
+    width: 40%; /* Ajusta el ancho del aside según sea necesario */
+    margin-left: 70px;
 }
-.grafico{ /* Ajusta el ancho del canvas según tus necesidades */
-    margin-right: 130px;
+
+.grafico {
+    width: 60%; /* Ajusta el ancho del gráfico según sea necesario */
 }
