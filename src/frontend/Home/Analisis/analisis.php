@@ -19,6 +19,7 @@ include_once '../../../backend/conexion.php';
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
     <script src="utilidades.js"></script>
     <script src="analisis.js"></script>
+    <script src="obtenerMes.js"></script>
     <link rel="stylesheet" href="analisis.css">
     <title>Ferreteria</title>
 </head>
@@ -73,52 +74,24 @@ include_once '../../../backend/conexion.php';
                         </tbody>
                     </table>
                     <table class="table table-striped">
-                        <?php
-                            // Establecer la configuración regional a español
-                            include_once '../../../backend/conexion.php';
-                            $meses_ingles = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-                            $meses_espanol = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
-
-                            // Obtener el nombre del mes actual en inglés
-                            $mes_actual_ingles = date('F');
-
-                            // Traducir el nombre del mes a español
-                            $mes_actual_espanol = str_replace($meses_ingles, $meses_espanol, $mes_actual_ingles);
-
-                            echo "<h6 class='mt-5'>Ranking de productos vendidos en " . $mes_actual_espanol . "</h6>";
-                        ?>
-                        <thead>
-                            <tr>
-                                <th scope="col">Producto</th>
-                                <th scope="col">Veces vendido</th>
-                            </tr>
-                        </thead>
                         <tbody>
-                            <?php
-                                $sql_productos_ranking = "SELECT
-                                        productos.nombre AS Producto,
-                                        SUM(detalleventas.piezas) AS TotalPiezasVendidas
-                                    FROM
-                                        detalleventas
-                                    INNER JOIN
-                                        productos ON detalleventas.id_producto = productos.id
-                                    INNER JOIN
-                                        ventas ON detalleventas.id_venta = ventas.id
-                                    WHERE
-                                        MONTH(ventas.fecha) = MONTH(CURDATE())
-                                    GROUP BY
-                                        detalleventas.id_producto, productos.nombre
-                                    ORDER BY
-                                        TotalPiezasVendidas DESC;";
-
-                                $resultado_productos_ranking = mysqli_query($conexion, $sql_productos_ranking);
-                                while ($fila_productos_ranking = mysqli_fetch_assoc($resultado_productos_ranking)) {
-                                    echo "<tr>";
-                                    echo "<td>" . $fila_productos_ranking['Producto'] . "</td>";
-                                    echo "<td>" . $fila_productos_ranking['TotalPiezasVendidas'] . "</td>";
-                                    echo "</tr>";
-                                }
-                            ?>
+                                <h6 class='mt-5'>Ranking de productos vendidos en 
+                                    <select id='selectMes' onchange='enviarSolicitud()'>
+                                        <option value='1'>Enero</option>
+                                        <option value='2'>Febrero</option>
+                                        <option value='3'>Marzo</option>
+                                        <option value='4'>Abril</option>
+                                        <option value='5'>Mayo</option>
+                                        <option value='6'>Junio</option>
+                                        <option value='7'>Julio</option>
+                                        <option value='8'>Agosto</option>
+                                        <option value='9'>Septiembre</option>
+                                        <option value='10'>Octubre</option>
+                                        <option value='11'>Noviembre</option>
+                                        <option value='12'>Diciembre</option>
+                                </select> 
+                                </h6>
+                                <div id="tablaProductosContainer"></div>
                         </tbody>
                     </table>
                 </aside>
