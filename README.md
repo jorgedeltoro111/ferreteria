@@ -1,6 +1,9 @@
 # Punto de venta (Ferreteria)
 
 Este punto de venta ayuda a tu negocio a llevar el control del flujo de dinero mensual, incluyendo una sección especifica para el análisis de utilidades, productos más vendidos y un listado de los usuarios que más vendieron durante el mes.
+## Credenciales para poder probar el punto de venta.
+# Usuario: Admin 
+# Contraseña: Admin
 
 ## Secciones del punto de venta
  - Usuarios
@@ -26,4 +29,4 @@ Este punto de venta ayuda a tu negocio a llevar el control del flujo de dinero m
  <br> - Anánlisis
 <br><br>
 <img src="https://github.com/jorgedeltoro111/ferreteria/assets/119456589/50e02f54-b313-4057-a209-59d4c89e2846" alt="Sección análisis" width="700" height="350"><br><hr>
- 
+
