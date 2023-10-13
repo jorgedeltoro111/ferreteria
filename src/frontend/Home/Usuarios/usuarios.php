@@ -80,10 +80,11 @@ $result = $conexion->query($sql);
                     <label for="password">Contraseña</label>
                     <input type="password" class="form-control" name="password" placeholder="Contraseña">
                 </div>
+                <input type="hidden" name="activo" value="1">
             </div>
             <div class="row mt-3">
                 <div class="col">
-                <button type="submit" class="btn btn-success mt-3">Registrar</button>
+                    <button type="submit" class="btn btn-success mt-3">Registrar</button>
                 </div>
             </div>
         </form>

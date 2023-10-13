@@ -22,10 +22,11 @@
             $result = mysqli_query($conexion, $sql);
             if(mysqli_num_rows($result)===1){
                 $row = mysqli_fetch_assoc($result);
-                if($row && password_verify($password, $row['password'])){
+                if($row && password_verify($password, $row['password']) && $row['activo'] == 1){
                     $_SESSION['usuario'] = $row['usuario'];
                     $_SESSION['password'] = $row['password'];
                     $_SESSION['id'] = $row['id'];
+                    $_SESSION['activo'] = $row['activo'];   
                     header("Location: ../../frontend/Home/home.php");
                     exit();
                 }else{
