@@ -46,7 +46,7 @@ include_once '../../../backend/conexion.php';
             <select name="proveedores" id="proveedores" onchange="obtenerProveedorSeleccionado(this.value)">
                 <?php
                     // Consulta SQL para obtener los clientes
-                    $sql = "SELECT id, name FROM proveedores";
+                    $sql = "SELECT id, name FROM proveedores WHERE activo = 1";
                     $result = $conexion->query($sql);
                     echo "<option value='0'>Selecciona un proveedor</option>";
                     if($result->num_rows > 0){

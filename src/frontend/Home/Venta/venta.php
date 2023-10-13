@@ -49,7 +49,7 @@ $result = $conexion->query($sql);
                             <option value="0" selected>Selecciona un producto</option>
                             <?php
                             // Consulta SQL para obtener los productos
-                            $sql = "SELECT * FROM productos";
+                            $sql = "SELECT * FROM productos WHERE activo = 1";
                             $result = $conexion->query($sql);
                             if ($result->num_rows > 0) {
                                 // Itera sobre los productos
