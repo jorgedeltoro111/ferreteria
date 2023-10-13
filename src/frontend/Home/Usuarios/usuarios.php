@@ -9,7 +9,7 @@ if (!isset($_SESSION['usuario'])) {
 include_once '../../../backend/conexion.php';
 
 // Consulta SQL para obtener los clientes
-$sql = "SELECT * FROM usuarios";
+$sql = "SELECT * FROM usuarios WHERE activo = 1";
 $result = $conexion->query($sql);
 ?>
 <!DOCTYPE html>
@@ -93,7 +93,7 @@ $result = $conexion->query($sql);
     <h6>Selecciona el usuario que deseas modificar</h6>
         <select id="usuarioSelect" onchange="redirigirAFormulario()">
             <?php
-                $sql = "SELECT id FROM usuarios";
+                $sql = "SELECT id FROM usuarios WHERE activo = 1";
                 $result = $conexion->query($sql);
                 echo "<option>Selecciona un ID</option>";
                 if($result->num_rows > 0){
@@ -112,7 +112,7 @@ $result = $conexion->query($sql);
             </thead>
             <tbody>
                 <?php
-                    $sql = "SELECT * FROM usuarios";
+                    $sql = "SELECT * FROM usuarios WHERE activo = 1";
                     $result = $conexion->query($sql);
                     if($result->num_rows > 0){
                         while($row = $result->fetch_assoc()){
@@ -128,15 +128,12 @@ $result = $conexion->query($sql);
     </div>
 
     <div class="tab-pane fade" id="eliminar" role="tabpanel" aria-labelledby="contact-tab">
-        <h6 class="p-3 mb-2 bg-danger text-white">
-            NOTA: Al eliminar un usuario, se eliminarán todas los registros de compras y ventas que se hayan realizado con ese usuario.
-        </h6>
         <h6>Selecciona al usuario que deseas eliminar</h6>
         <form action="../../../backend/Usuarios/eliminar.php" method="POST">
         <select name="usuariosEliminar" id="usuariosEliminar">
             <?php
                 // Consulta SQL para obtener los clientes
-                $sql = "SELECT id, usuario FROM usuarios";
+                $sql = "SELECT id, usuario, activo FROM usuarios WHERE activo = 1";
                 $result = $conexion->query($sql);
                 echo "<option>Usuarios</option>";
                 if($result->num_rows > 0){
@@ -163,7 +160,7 @@ $result = $conexion->query($sql);
             </thead>
             <tbody>
                 <?php
-                    $sql = "SELECT * FROM usuarios";
+                    $sql = "SELECT * FROM usuarios WHERE activo = 1";
                     $result = $conexion->query($sql);
                     if($result->num_rows > 0){
                         while($row = $result->fetch_assoc()){

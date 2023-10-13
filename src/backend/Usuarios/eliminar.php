@@ -7,7 +7,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $usuarioId = $_POST["usuariosEliminar"];
         
         // Consulta SQL para eliminar el cliente
-        $sql = "DELETE FROM usuarios WHERE id = $usuarioId";
+        $sql = "UPDATE usuarios SET activo = 0 WHERE id = $usuarioId";
 
         if ($conexion->query($sql) === TRUE) {
             header("Location: ../../frontend/Home/Usuarios/usuarios.php");
