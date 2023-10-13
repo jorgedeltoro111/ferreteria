@@ -8,8 +8,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $phone = $_POST["phone"];
         $email = $_POST["email"];
         
-        $sql = "INSERT INTO proveedores (name, adress, phone, email)
-            VALUES ('$name', '$adress', '$phone', '$email')";
+        $sql = "INSERT INTO proveedores (name, adress, phone, email, activo)
+            VALUES ('$name', '$adress', '$phone', '$email', 1)";
 
         if ($conexion->query($sql) === TRUE) {
             header("Location: ../../frontend/Home/Proveedores/proveedores.php");

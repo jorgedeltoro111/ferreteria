@@ -9,7 +9,7 @@ if (!isset($_SESSION['usuario'])) {
 include_once '../../../backend/conexion.php';
 
 // Consulta SQL para obtener los clientes
-$sql = "SELECT * FROM proveedores";
+$sql = "SELECT * FROM proveedores WHERE activo = 1";
 $result = $conexion->query($sql);
 ?>
 <!DOCTYPE html>
@@ -95,7 +95,7 @@ $result = $conexion->query($sql);
                 <div class="col">
                     <label for="email">Correo electrónico</label>
                     <input type="email" class="form-control" name="email" placeholder="ingresa tu correo electrónico">
-            </div>
+                </div>
             <div class="row mt-3">
                 <div class="col">
                 <button type="submit" class="btn btn-success mt-3" onclick="confirmacion();">Registrar</button>
@@ -113,7 +113,7 @@ $result = $conexion->query($sql);
     <h6>Selecciona el proveedor que deseas modificar</h6>
         <select id="clienteSelect" onchange="redirigirAFormulario()">
             <?php
-                $sql = "SELECT id FROM proveedores";
+                $sql = "SELECT id FROM proveedores WHERE activo = 1";
                 $result = $conexion->query($sql);
                 echo "<option>Selecciona un ID</option>";
                 if($result->num_rows > 0){
@@ -135,7 +135,7 @@ $result = $conexion->query($sql);
             </thead>
             <tbody>
                 <?php
-                    $sql = "SELECT * FROM proveedores";
+                    $sql = "SELECT * FROM proveedores WHERE activo = 1";
                     $result = $conexion->query($sql);
                     if($result->num_rows > 0){
                         while($row = $result->fetch_assoc()){
@@ -153,15 +153,12 @@ $result = $conexion->query($sql);
             </table>
     </div>
     <div class="tab-pane fade" id="eliminar" role="tabpanel" aria-labelledby="contact-tab">
-        <h6 class="p-3 mb-2 bg-danger text-white">
-            NOTA: Al eliminar un proveedor, se eliminarán todas los registros relacionados con ese proveedor.
-        </h6>
         <h6>Selecciona al proveedor que deseas eliminar</h6>
         <form action="../../../backend/Proveedores/eliminar.php" method="POST">
         <select name="proveedoresEliminar" id="proveedoresEliminar">
             <?php
                 // Consulta SQL para obtener los clientes
-                $sql = "SELECT id, name FROM proveedores";
+                $sql = "SELECT id, name FROM proveedores WHERE activo = 1";
                 $result = $conexion->query($sql);
                 echo "<option>Proveedores</option>";
                 if($result->num_rows > 0){
@@ -191,7 +188,7 @@ $result = $conexion->query($sql);
             </thead>
             <tbody>
                 <?php
-                    $sql = "SELECT * FROM proveedores";
+                    $sql = "SELECT * FROM proveedores WHERE activo = 1";
                     $result = $conexion->query($sql);
                     if($result->num_rows > 0){
                         while($row = $result->fetch_assoc()){

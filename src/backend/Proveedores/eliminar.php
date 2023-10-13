@@ -7,8 +7,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $proveedoresId = $_POST["proveedoresEliminar"];
         
         // Consulta SQL para eliminar el cliente
-        $sql = "DELETE FROM proveedores WHERE id = $proveedoresId";
-
+        $sql = "UPDATE proveedores SET activo = 0 WHERE id = $proveedoresId";
         if ($conexion->query($sql) === TRUE) {
             header("Location: ../../frontend/Home/Proveedores/proveedores.php");
         } else {
