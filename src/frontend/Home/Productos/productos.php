@@ -9,7 +9,7 @@ if (!isset($_SESSION['usuario'])) {
 include_once '../../../backend/conexion.php';
 
 // Consulta SQL para obtener los clientes
-$sql = "SELECT * FROM productos";
+$sql = "SELECT * FROM productos WHERE activo = 1";
 $result = $conexion->query($sql);
 ?>
 <!DOCTYPE html>
@@ -108,7 +108,7 @@ $result = $conexion->query($sql);
     <h6>Selecciona el producto que deseas modificar</h6>
         <select id="productoSelect" onchange="redirigirAFormulario()">
             <?php
-                $sql = "SELECT id FROM productos";
+                $sql = "SELECT id FROM productos WHERE activo = 1";
                 $result = $conexion->query($sql);
                 echo "<option>Selecciona un ID</option>";
                 if($result->num_rows > 0){
@@ -130,7 +130,7 @@ $result = $conexion->query($sql);
             </thead>
             <tbody>
                 <?php
-                    $sql = "SELECT * FROM productos";
+                    $sql = "SELECT * FROM productos WHERE activo = 1";
                     $result = $conexion->query($sql);
                     if($result->num_rows > 0){
                         while($row = $result->fetch_assoc()){
@@ -149,15 +149,12 @@ $result = $conexion->query($sql);
     </div>
 
     <div class="tab-pane fade" id="eliminar" role="tabpanel" aria-labelledby="contact-tab">
-        <h6 class="p-3 mb-2 bg-danger text-white">
-            NOTA: Al eliminar un producto, se eliminarán todas los registros de compras y ventas que se hayan realizado con ese producto.
-        </h6>
         <h6>Selecciona el producto que deseas eliminar</h6>
         <form action="../../../backend/Productos/eliminar.php" method="POST">
         <select name="productosEliminar" id="productosEliminar">
             <?php
                 // Consulta SQL para obtener los clientes
-                $sql = "SELECT id, nombre FROM productos";
+                $sql = "SELECT id, nombre FROM productos WHERE activo = 1";
                 $result = $conexion->query($sql);
                 echo "<option>Productos</option>";
                 if($result->num_rows > 0){
@@ -192,7 +189,7 @@ $result = $conexion->query($sql);
             </thead>
             <tbody>
                 <?php
-                    $sql = "SELECT * FROM productos";
+                    $sql = "SELECT * FROM productos WHERE activo = 1";
                     $result = $conexion->query($sql);
                     if($result->num_rows > 0){
                         while($row = $result->fetch_assoc()){

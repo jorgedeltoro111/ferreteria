@@ -21,7 +21,7 @@ if($conexion->query($sql)){
         $existencias = $producto->existencias;
 
         // Verificar si el producto ya existe
-        $sqlBuscar = "SELECT * FROM productos WHERE nombre = '$nombre'";
+        $sqlBuscar = "SELECT * FROM productos WHERE nombre = '$nombre' AND activo = 1";
         $result = $conexion->query($sqlBuscar);
 
         if ($result->num_rows > 0) {
@@ -36,8 +36,8 @@ if($conexion->query($sql)){
             $conexion->query($sqlDetalleCompra);
         } else {
             // Crear el producto y registrar el detalle de la compra
-            $sqlProducto = "INSERT INTO productos (nombre, descripcion, precio, existencias, id_proveedor) 
-                            VALUES ('$nombre', '$descripcion', $precio, $existencias, $proveedor)";
+            $sqlProducto = "INSERT INTO productos (nombre, descripcion, precio, existencias, id_proveedor, activo) 
+                            VALUES ('$nombre', '$descripcion', $precio, $existencias, $proveedor, 1)";
             $conexion->query($sqlProducto);
 
             $idProducto = $conexion->insert_id;
