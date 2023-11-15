@@ -63,7 +63,6 @@ $result = $conexion->query($sql);
                         </select>
                         <label for="idPorcentaje">Porcentaje de ganancia: </label>
                         <select id="idPorcentaje" class="mt-2">
-                        <option value="0">0%</option>
                         <option value="0.10">10%</option>
                         <option value="0.15">15%</option>
                         <option value="0.20">20%</option>
